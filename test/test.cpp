@@ -1,21 +1,31 @@
-#include <hello_world.hpp>
+#include <matrix_operations.hpp>
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
-TEST_CASE("test version")
-{
-    REQUIRE(HELLOWORLD_VERSION_STRING == std::string("1.0.0"));
+#include <matrix_operations.hpp>
+#define CATCH_CONFIG_MAIN
+#include <catch.hpp>
+
+std::vector<std::vector<int>> matrix_1 = {{1}};
+std::vector<std::vector<int>> matrix_2 = {{1}, {2}};
+std::vector<std::vector<int>> matrix_3 = {{1, 2}, {3, 4}};
+
+std::vector<std::vector<int>> matrix_1_sol = {{1}};
+std::vector<std::vector<int>> matrix_2_sol = {{1, 2}};
+std::vector<std::vector<int>> matrix_3_sol = {{1, 3}, {2, 4}};
+
+std::vector<std::vector<int>> matrix_2_1_sol = {{1}, {2}};
+
+std::vector<std::vector<int>> matrix_3_3_sol = {{7, 10}, {15, 22}};
+
+TEST_CASE( "Matrix products are computed" ) {
+    REQUIRE( matrix_operations::matrix_multiplication(matrix_2, matrix_1) == matrix_2_1_sol);
+    REQUIRE( matrix_operations::matrix_multiplication(matrix_3, matrix_3) == matrix_3_3_sol);
+    REQUIRE_THROWS(matrix_operations::matrix_multiplication(matrix_1, matrix_3));
 }
 
-TEST_CASE("test_exclaim")
-{
-    std::string value = hello_world::exclaim("hello");
-    REQUIRE(value == std::string("hello!"));
-}
-
-TEST_CASE("test_expensive")
-{
-    std::size_t work = 100;
-    std::string result = hello_world::expensive(work);
-    REQUIRE(result == std::string("Expensive work is finished"));
+TEST_CASE( "Matrix transposes are computed", "[matrix_transpose]" ) {
+    REQUIRE( matrix_operations::matrix_transpose(matrix_1) == matrix_1_sol );
+    REQUIRE( matrix_operations::matrix_transpose(matrix_2) == matrix_2_sol );
+    REQUIRE( matrix_operations::matrix_transpose(matrix_3) == matrix_3_sol );
 }
