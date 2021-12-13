@@ -5,7 +5,7 @@ using std::cout;
 
 namespace matrix_operations {
 
-inline std::vector<std::vector<int>> matrix_multiplication(std::vector<std::vector<int>> A, std::vector<std::vector<int>> B)
+inline std::vector<std::vector<double>> matrix_multiplication(std::vector<std::vector<double>> A, std::vector<std::vector<double>> B)
 { 
     
     unsigned long row_1 =  A.size(), col_1 =  A[0].size();
@@ -15,7 +15,7 @@ inline std::vector<std::vector<int>> matrix_multiplication(std::vector<std::vect
         throw std::invalid_argument( "Matrices can not be multiplied due to incompatible shapes." );
     }
 
-    std::vector<std::vector<int>> result(row_1, std::vector<int>(col_2, 0));
+    std::vector<std::vector<double>> result(row_1, std::vector<double>(col_2, 0));
 
     for (unsigned int i = 0; i < row_1; i++) {
         for (unsigned int j = 0; j < col_2; j++) {
@@ -30,10 +30,10 @@ inline std::vector<std::vector<int>> matrix_multiplication(std::vector<std::vect
     return result;
 }
 
-inline std::vector<std::vector<int>> matrix_transpose(std::vector<std::vector<int>> A) {
+inline std::vector<std::vector<double>> matrix_transpose(std::vector<std::vector<double>> A) {
     
         unsigned long M = A.size(), N =  A[0].size();
-        std::vector<std::vector<int>> transpose(N, std::vector<int>(M, 0));
+        std::vector<std::vector<double>> transpose(N, std::vector<double>(M, 0));
         for (unsigned int j = 0; j < N; j++){
             for (unsigned int i = 0; i < M; i++){
                 try{
