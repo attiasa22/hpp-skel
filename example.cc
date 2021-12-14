@@ -3,7 +3,7 @@
 #include <vector>
 int main(){
 
-    std::vector<std::vector<double>> solution = matrix_operations::matrix_multiplication({{5.5,0.1024},{1.04,-2}},{{100,54345},{109742,-444}});
+    std::vector<std::vector<double>> solution = matrix_operations::matrix_multiplication({{5.5,0.1024},{1.04,-2}},{{100},{-444}});
     cout << "Solution \n";
     for (unsigned int i =0; i < solution.size(); i++){
         for (unsigned int j =0; j < solution[i].size(); j++){
